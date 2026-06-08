@@ -1,0 +1,108 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: uploads
+public_folder: /uploads
+
+# Enables the editorial workflow (draft → review → publish)
+# publish_mode: editorial_workflow
+
+collections:
+
+  # ─── SITE SETTINGS ──────────────────────────────────────────────────────────
+  - name: settings
+    label: ⚙️ Site Settings
+    files:
+
+      - label: General Info
+        name: general
+        file: content/settings.json
+        fields:
+          - { label: Clinic Name,        name: name,         widget: string,   default: "Optima Health Care" }
+          - { label: Phone Number,       name: phone,        widget: string,   default: "+971 XX XXX XXXX" }
+          - { label: WhatsApp Number,    name: whatsapp,     widget: string,   hint: "Include country code, no spaces e.g. 971501234567" }
+          - { label: Email Address,      name: email,        widget: string,   default: "hello@optimahealthcare.ae" }
+          - { label: Address,            name: address,      widget: string,   default: "Jumeirah, Dubai" }
+          - { label: Google Maps Link,   name: maps_url,     widget: string,   required: false }
+          - { label: Instagram URL,      name: instagram,    widget: string,   required: false }
+          - { label: Facebook URL,       name: facebook,     widget: string,   required: false }
+          - { label: TikTok URL,         name: tiktok,       widget: string,   required: false }
+          - { label: Business Hours,     name: hours,        widget: string,   default: "Mon–Sat 9:00 AM – 9:00 PM" }
+
+      - label: Hero Section
+        name: hero
+        file: content/hero.json
+        fields:
+          - { label: Headline Line 1,    name: line1,        widget: string,   default: "Confidence," }
+          - { label: Headline Line 2,    name: line2,        widget: string,   default: "beautifully" }
+          - { label: Headline Line 3,    name: line3,        widget: string,   default: "restored." }
+          - { label: Subtext,            name: subtext,      widget: text,     default: "Dubai's first clinic combining dental excellence, facial aesthetics and dermatology under one roof." }
+          - { label: CTA Button Text,    name: cta,          widget: string,   default: "Begin your journey" }
+          - { label: Stat 1 — Number,    name: stat1_num,    widget: string,   default: "3,200+" }
+          - { label: Stat 1 — Label,     name: stat1_label,  widget: string,   default: "Smiles transformed" }
+          - { label: Stat 2 — Number,    name: stat2_num,    widget: string,   default: "14" }
+          - { label: Stat 2 — Label,     name: stat2_label,  widget: string,   default: "Specialists on staff" }
+          - { label: Stat 3 — Number,    name: stat3_num,    widget: string,   default: "4.9★" }
+          - { label: Stat 3 — Label,     name: stat3_label,  widget: string,   default: "Average rating" }
+
+  # ─── DOCTORS ────────────────────────────────────────────────────────────────
+  - name: doctors
+    label: 👨‍⚕️ Doctors
+    folder: content/doctors
+    create: true
+    slug: "{{slug}}"
+    identifier_field: name
+    summary: "{{name}} — {{title}}"
+    fields:
+      - { label: Full Name,      name: name,        widget: string }
+      - { label: Title / Role,   name: title,       widget: string,  hint: "e.g. Lead Cosmetic Dentist" }
+      - { label: Specialty,      name: specialty,   widget: string,  hint: "e.g. Smile Design & Veneers" }
+      - { label: Photo,          name: photo,       widget: image,   required: false }
+      - { label: Short Bio,      name: bio,         widget: text }
+      - { label: Credentials,    name: credentials, widget: list,    field: { label: Credential, name: item, widget: string } }
+      - { label: Display Order,  name: order,       widget: number,  default: 1 }
+
+  # ─── SERVICES ────────────────────────────────────────────────────────────────
+  - name: services
+    label: 💎 Services
+    folder: content/services
+    create: true
+    slug: "{{slug}}"
+    identifier_field: name
+    summary: "{{name}}"
+    fields:
+      - { label: Service Name,     name: name,        widget: string }
+      - { label: Category,         name: category,    widget: select, options: ["Dental", "Facial Aesthetics", "Skin & Dermatology", "Wellness & Body"] }
+      - { label: Short Description, name: description, widget: text }
+      - { label: Icon Emoji,        name: icon,        widget: string,  default: "✦",  hint: "Single emoji or symbol" }
+      - { label: Featured,          name: featured,    widget: boolean, default: false }
+      - { label: Display Order,     name: order,       widget: number,  default: 1 }
+
+  # ─── TESTIMONIALS ────────────────────────────────────────────────────────────
+  - name: testimonials
+    label: ⭐ Testimonials
+    folder: content/testimonials
+    create: true
+    slug: "{{slug}}"
+    identifier_field: name
+    summary: "{{name}} — {{treatment}}"
+    fields:
+      - { label: Patient Name,    name: name,       widget: string }
+      - { label: Treatment,       name: treatment,  widget: string,  hint: "e.g. Smile Makeover" }
+      - { label: Quote,           name: quote,      widget: text }
+      - { label: Rating,          name: rating,     widget: number,  min: 1, max: 5, default: 5 }
+      - { label: Display Order,   name: order,      widget: number,  default: 1 }
+
+  # ─── FAQS ────────────────────────────────────────────────────────────────────
+  - name: faqs
+    label: ❓ FAQs
+    folder: content/faqs
+    create: true
+    slug: "{{slug}}"
+    identifier_field: question
+    summary: "{{question}}"
+    fields:
+      - { label: Question,       name: question,   widget: string }
+      - { label: Answer,         name: answer,     widget: text }
+      - { label: Display Order,  name: order,      widget: number, default: 1 }
