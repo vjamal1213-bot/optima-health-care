@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /content/
+
+Sitemap: https://optima-health-care.netlify.app/sitemap.xml
