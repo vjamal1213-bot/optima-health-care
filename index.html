@@ -1106,9 +1106,12 @@
 
         .video-stage {
             position: relative;
-            aspect-ratio: 16 / 9;
+            width: 100%;
+            height: 80vh;           /* fills ~full screen */
+            min-height: 480px;
+            max-height: 900px;
             overflow: hidden;
-            background: #060E1A;
+            background: #060E1A url('/uploads/clinic-poster.jpg') center/cover no-repeat;
             cursor: pointer;
         }
 
@@ -1881,12 +1884,15 @@
                 <video
                     id="clinicVideo"
                     src="/uploads/clinic-tour.mp4"
+                    poster="/uploads/clinic-poster.jpg"
                     preload="metadata"
                     playsinline
                     style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 0.6s ease;"
                     aria-label="Clinic tour video">
                 </video>
-                <div class="video-bg-gradient" id="videoBgGradient"></div>
+                <!-- Dark overlay on top of poster for text legibility -->
+                <div style="position:absolute;inset:0;background:linear-gradient(to bottom, rgba(6,14,26,0.45) 0%, rgba(6,14,26,0.2) 40%, rgba(6,14,26,0.65) 100%);z-index:1;pointer-events:none;" id="posterOverlay"></div>
+                <div class="video-bg-gradient" id="videoBgGradient" style="display:none;"></div>
                 <button class="play-btn" id="playBtn" aria-label="Play clinic tour video">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M8 5v14l11-7z"/>
@@ -2822,17 +2828,19 @@ document.querySelectorAll('.faq-q').forEach(btn => {
 const playBtn    = document.getElementById('playBtn');
 const videoStage = document.getElementById('videoStage');
 if (playBtn && videoStage) {
-    const clinicVideo   = document.getElementById('clinicVideo');
-    const bgGradient    = document.getElementById('videoBgGradient');
-    let   videoPlaying  = false;
+    const clinicVideo    = document.getElementById('clinicVideo');
+    const bgGradient     = document.getElementById('videoBgGradient');
+    const posterOverlay  = document.getElementById('posterOverlay');
+    let   videoPlaying   = false;
 
     playBtn.addEventListener('click', () => {
         if (!clinicVideo) return;
 
         if (!videoPlaying) {
-            // First play — reveal video, hide gradient, switch to pause icon
+            // First play — reveal video, hide poster overlay
             clinicVideo.style.opacity = '1';
-            if (bgGradient) bgGradient.style.opacity = '0';
+            if (posterOverlay) posterOverlay.style.opacity = '0';
+            if (bgGradient) bgGradient.style.display = 'none';
             clinicVideo.play();
             videoPlaying = true;
 
@@ -2874,7 +2882,8 @@ if (playBtn && videoStage) {
     clinicVideo.addEventListener('ended', () => {
         videoPlaying = false;
         clinicVideo.style.opacity = '0';
-        if (bgGradient) bgGradient.style.opacity = '1';
+        if (posterOverlay) posterOverlay.style.opacity = '1';
+        if (bgGradient) bgGradient.style.display = 'none';
         playBtn.innerHTML = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path d="M8 5v14l11-7z"/></svg>`;
         playBtn.style.opacity = '1';
