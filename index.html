@@ -122,16 +122,16 @@
         ============================================= */
         .logo-lockup {
             display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            align-items: flex-start;  /* top of symbol aligns with top of OPTIMA, hangs below like brand */
+            gap: 0.3rem;
             cursor: pointer;
             text-decoration: none;
         }
 
-        /* Brand symbol PNG – right of text, vertically centred on text block */
+        /* Brand symbol PNG – top-aligned, hangs below health care */
         .logo-icon {
             width: auto;
-            height: 46px;          /* matches brand: symbol ≈ 1.3× total text block */
+            height: 54px;          /* taller than text block so it hangs below, matching brand ratio */
             flex-shrink: 0;
             display: block;
             object-fit: contain;
