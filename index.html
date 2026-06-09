@@ -1877,7 +1877,16 @@
         </div>
         <div class="container" style="padding-left:0;padding-right:0;">
             <div class="video-stage reveal" id="videoStage">
-                <div class="video-bg-gradient"></div>
+                <!-- Actual clinic tour video -->
+                <video
+                    id="clinicVideo"
+                    src="/uploads/clinic-tour.mp4"
+                    preload="metadata"
+                    playsinline
+                    style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 0.6s ease;"
+                    aria-label="Clinic tour video">
+                </video>
+                <div class="video-bg-gradient" id="videoBgGradient"></div>
                 <button class="play-btn" id="playBtn" aria-label="Play clinic tour video">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M8 5v14l11-7z"/>
@@ -1885,7 +1894,7 @@
                 </button>
                 <div class="video-caption-block">
                     <p class="video-cap-label">Clinic Tour</p>
-                    <p class="video-cap-title">Optima Health Care Jumeirah, Dubai</p>
+                    <p class="video-cap-title">Optima Health Care, Dubai</p>
                 </div>
                 <p class="video-duration">0:45</p>
             </div>
@@ -2813,14 +2822,63 @@ document.querySelectorAll('.faq-q').forEach(btn => {
 const playBtn    = document.getElementById('playBtn');
 const videoStage = document.getElementById('videoStage');
 if (playBtn && videoStage) {
+    const clinicVideo   = document.getElementById('clinicVideo');
+    const bgGradient    = document.getElementById('videoBgGradient');
+    let   videoPlaying  = false;
+
     playBtn.addEventListener('click', () => {
-        videoStage.innerHTML = `
-            <iframe
-                style="position:absolute;inset:0;width:100%;height:100%;border:none;"
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&rel=0&modestbranding=1"
-                allow="autoplay; fullscreen"
-                allowfullscreen>
-            </iframe>`;
+        if (!clinicVideo) return;
+
+        if (!videoPlaying) {
+            // First play — reveal video, hide gradient, switch to pause icon
+            clinicVideo.style.opacity = '1';
+            if (bgGradient) bgGradient.style.opacity = '0';
+            clinicVideo.play();
+            videoPlaying = true;
+
+            // Switch to pause icon
+            playBtn.innerHTML = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>`;
+            playBtn.style.opacity = '0.7';
+
+            // Hide play button after 2s while playing
+            setTimeout(() => {
+                if (videoPlaying) playBtn.style.opacity = '0';
+            }, 2000);
+
+        } else {
+            // Toggle pause/play
+            if (clinicVideo.paused) {
+                clinicVideo.play();
+                playBtn.innerHTML = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>`;
+                setTimeout(() => { playBtn.style.opacity = '0'; }, 2000);
+            } else {
+                clinicVideo.pause();
+                playBtn.innerHTML = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8 5v14l11-7z"/></svg>`;
+                playBtn.style.opacity = '1';
+            }
+        }
+    });
+
+    // Show play button on hover while video is playing
+    videoStage.addEventListener('mouseenter', () => {
+        if (videoPlaying) playBtn.style.opacity = '0.7';
+    });
+    videoStage.addEventListener('mouseleave', () => {
+        if (videoPlaying && !clinicVideo.paused) playBtn.style.opacity = '0';
+    });
+
+    // Reset when video ends
+    clinicVideo.addEventListener('ended', () => {
+        videoPlaying = false;
+        clinicVideo.style.opacity = '0';
+        if (bgGradient) bgGradient.style.opacity = '1';
+        playBtn.innerHTML = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 5v14l11-7z"/></svg>`;
+        playBtn.style.opacity = '1';
+        clinicVideo.currentTime = 0;
     });
 }
 
