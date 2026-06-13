@@ -8,6 +8,11 @@
     <meta name="keywords" content="dental clinic Dubai, smile makeover Dubai, veneers Dubai, dental implants DIP, Botox Dubai, dermal fillers Dubai, teeth whitening Dubai, Invisalign Dubai, HydraFacial Dubai, body contouring Dubai, IV drip Dubai, aesthetic clinic DIP, dentist Dubai Investment Park, cosmetic dentist Dubai">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="theme-color" content="#0D2840">
+    <!-- iOS / Android home screen -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Optima Health Care">
+    <meta name="mobile-web-app-capable" content="yes">
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://optima-health-care.netlify.app/">
@@ -252,6 +257,8 @@
             scroll-behavior: smooth;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            /* Prevent font scaling in landscape on iOS */
+            -webkit-text-size-adjust: 100%;
         }
 
         body {
@@ -263,7 +270,18 @@
             overflow-x: hidden;
         }
 
-        a { color: inherit; text-decoration: none; }
+        /* Remove tap highlight flash on iOS/Android */
+        a, button, [role="button"] {
+            -webkit-tap-highlight-color: transparent;
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Eliminate 300ms tap delay on interactive elements */
+        a, button, input, select, textarea, label {
+            touch-action: manipulation;
+        }
+
         button { border: none; background: none; cursor: pointer; }
         img { display: block; max-width: 100%; }
 
@@ -439,7 +457,7 @@
         .nav-cta:hover { background: var(--teal-deep); transform: translateY(-1px); }
         .header.scrolled .nav-cta { background: var(--teal); color: var(--navy); }
 
-        .hamburger { display: flex; flex-direction: column; gap: 6px; padding: 4px; cursor: pointer; }
+        .hamburger { display: flex; flex-direction: column; gap: 6px; padding: 12px; cursor: pointer; min-width: 44px; min-height: 44px; align-items: center; justify-content: center; }
         @media (min-width: 1024px) { .hamburger { display: none; } }
         .hamburger span { display: block; width: 22px; height: 1px; background: rgba(246,241,234,0.7); transition: background 200ms; }
         .header.scrolled .hamburger span { background: var(--navy); }
@@ -456,9 +474,11 @@
         .mobile-nav.open { opacity: 1; pointer-events: all; }
 
         .mobile-nav-close {
-            position: absolute; top: 1.5rem; right: 2rem;
+            position: absolute; top: 1rem; right: 1.5rem;
             font-size: 1.2rem; color: var(--cream); opacity: 0.4;
             cursor: pointer; transition: opacity 200ms;
+            min-width: 44px; min-height: 44px;
+            display: flex; align-items: center; justify-content: center;
         }
         .mobile-nav-close:hover { opacity: 1; }
 
@@ -1090,13 +1110,14 @@
             border: 1px solid rgba(255,255,255,0.28);
             color: #fff;
             font-family: var(--font-body);
-            font-size: 0.9rem;
+            font-size: 1rem; /* ≥16px prevents iOS auto-zoom on focus */
             font-weight: 300;
             padding: 0.85rem 1rem;
             outline: none;
             transition: border-color 200ms var(--ease-silk), background 200ms var(--ease-silk);
             -webkit-appearance: none;
             border-radius: 0;
+            width: 100%;
         }
 
         .form-field input::placeholder { color: rgba(255,255,255,0.4); }
@@ -2458,17 +2479,17 @@
                         <div class="form-row">
                             <div class="form-field">
                                 <label for="fname">Full Name</label>
-                                <input type="text" id="fname" name="name" placeholder="Your full name" autocomplete="name" required>
+                                <input type="text" id="fname" name="name" placeholder="Your full name" autocomplete="name" autocapitalize="words" autocorrect="off" spellcheck="false" required>
                             </div>
                             <div class="form-field">
                                 <label for="fphone">Mobile Number</label>
-                                <input type="tel" id="fphone" name="phone" placeholder="+971 XX XXX XXXX" autocomplete="tel">
+                                <input type="tel" id="fphone" name="phone" placeholder="+971 XX XXX XXXX" autocomplete="tel" inputmode="tel" autocorrect="off">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-field">
                                 <label for="femail">Email Address</label>
-                                <input type="email" id="femail" name="email" placeholder="you@email.com" autocomplete="email">
+                                <input type="email" id="femail" name="email" placeholder="you@email.com" autocomplete="email" autocapitalize="none" autocorrect="off" spellcheck="false" inputmode="email">
                             </div>
                             <div class="form-field">
                                 <label for="fcontact">Preferred Contact Method</label>
@@ -2521,7 +2542,7 @@
                         <div class="form-row">
                             <div class="form-field" style="flex:2;">
                                 <label for="fconcern">Main Concern</label>
-                                <input type="text" id="fconcern" name="concern" placeholder="Briefly describe what you'd like to address">
+                                <textarea id="fconcern" name="concern" placeholder="Briefly describe what you'd like to address" rows="3" autocorrect="on" style="resize:vertical;font-family:var(--font-body);font-size:1rem;font-weight:300;background:rgba(255,255,255,0.14);border:1px solid rgba(255,255,255,0.28);color:#fff;padding:0.85rem 1rem;outline:none;width:100%;border-radius:0;-webkit-appearance:none;"></textarea>
                             </div>
                             <div class="form-field">
                                 <label for="fhear">How did you hear about us?</label>
