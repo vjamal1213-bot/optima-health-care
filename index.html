@@ -2746,7 +2746,156 @@
             .svc-list li { display:flex; align-items:center; gap:0.55rem; font-size:0.74rem; color:var(--ink-muted); padding:0.4rem 0; border-bottom:1px solid rgba(13,40,64,0.07); line-height:1.3; }
             .svc-list li:last-child { border-bottom:none; padding-bottom:0; }
             .svc-dot { width:5px; height:5px; min-width:5px; border-radius:50%; background:var(--teal); display:inline-block; }
-        </style>
+        
+        /* =============================================
+           RESPONSIVE POLISH
+           Covers phones (≤767px), small phones (≤480px),
+           tiny phones (≤390px) and tablets (768–1023px).
+        ============================================= */
+
+        /* Prevent iOS auto-zoom on select/textarea */
+        select, textarea { font-size: 1rem !important; }
+
+        /* Anchor offset so sticky header doesn't cover section */
+        section[id] { scroll-margin-top: 80px; }
+
+        /* ── Tablet: 768px – 1023px ─────────────────── */
+        @media (max-width: 1023px) {
+            /* Reduce excess whitespace in sections */
+            .container { padding: 0 2rem; }
+            /* Wizard: no need for full desktop padding */
+            .wizard-wrap { padding: 2rem; }
+        }
+
+        /* ── Mobile: ≤ 767px ─────────────────────────── */
+        @media (max-width: 767px) {
+            /* Container: tighter horizontal padding */
+            .container { padding: 0 1.25rem; }
+
+            /* Header: ensure logo doesn't crowd hamburger */
+            .header-inner { padding: 0; }
+
+            /* Hero: smaller minimum height for small phones */
+            .hero { min-height: 540px; }
+
+            /* Stats: reduce cell padding */
+            .stat-item { padding: 1.75rem 1rem; }
+            .stat-number { font-size: clamp(2rem, 10vw, 3.5rem); }
+
+            /* Philosophy visual: shorter on phones */
+            .philosophy-visual { height: 260px; }
+
+            /* Steps: less padding */
+            .step { padding: 1.5rem 0; }
+
+            /* Wizard: tighter padding so calendar has room */
+            .wizard-wrap { padding: 1.5rem 1.25rem; }
+
+            /* Treatment cards: hide description, just show icon + name */
+            .tc-desc { display: none; }
+            .treatment-card { padding: 1.1rem 0.75rem; }
+            .tc-icon svg { width: 24px; height: 24px; }
+
+            /* Calendar: slightly smaller text */
+            .cal-dow { font-size: 0.5rem; letter-spacing: 0.06em; }
+            .cal-day { font-size: 0.7rem; }
+
+            /* Slot grid: full width buttons stack nicer */
+            .slot-grid { grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+            .slot-btn { padding: 0.75rem 0.6rem; }
+            .slot-name { font-size: 0.72rem; }
+            .slot-time { font-size: 0.6rem; }
+
+            /* Wizard nav: stack on tiny screens */
+            .wizard-nav { gap: 0.75rem; }
+            .wizard-next-btn,
+            .wizard-submit-btn { padding: 0.9rem 1.5rem; font-size: 0.68rem; }
+
+            /* Review: reduce key column min-width */
+            .review-key { min-width: 80px; font-size: 0.58rem; }
+            .review-val { font-size: 0.78rem; }
+            .review-row { padding: 0.75rem 1rem; }
+
+            /* Success screen: less top padding */
+            .wizard-success { padding: 2rem 0.5rem 1rem; }
+
+            /* Footer bottom: consistent spacing */
+            .footer-bottom { gap: 0.4rem; }
+            .footer-fine { font-size: 0.65rem; }
+
+            /* Close section: stack CTAs */
+            .close-headline { font-size: clamp(1.4rem, 6vw, 2.2rem); }
+
+            /* FAQ: tighter padding */
+            .faq-item { padding: 1.25rem 0; }
+
+            /* Video section */
+            .video-cap-title { font-size: 0.9rem; }
+
+            /* Prevent any element from causing horizontal scroll */
+            .hero-deco { display: none; }
+        }
+
+        /* ── Small phones: ≤ 480px ───────────────────── */
+        @media (max-width: 480px) {
+            .container { padding: 0 1rem; }
+
+            /* Wizard: minimal padding */
+            .wizard-wrap { padding: 1.25rem 1rem; }
+
+            /* Progress pips: slightly thinner */
+            .wizard-progress { margin-bottom: 2rem; }
+
+            /* Step titles smaller */
+            .wizard-step-title { font-size: 1.3rem; }
+
+            /* Treatment grid: always 2 columns */
+            .treatment-grid { grid-template-columns: repeat(2, 1fr) !important; }
+
+            /* Stat numbers: scale with viewport */
+            .stat-number { font-size: clamp(1.8rem, 9vw, 3rem); }
+            .stat-label { font-size: 0.6rem; }
+
+            /* Slot grid: 1 column on very small phones */
+            .slot-grid { grid-template-columns: 1fr 1fr; gap: 0.4rem; }
+
+            /* Wizard nav: stack vertically */
+            .wizard-nav { flex-direction: column-reverse; align-items: stretch; gap: 0.5rem; }
+            .wizard-next-btn,
+            .wizard-submit-btn { width: 100%; text-align: center; justify-content: center; display: flex; align-items: center; }
+            .wizard-back-btn { text-align: center; padding: 0.5rem 0; }
+
+            /* Hero eyebrow: trim on small screens */
+            .hero-eyebrow { font-size: 0.6rem; letter-spacing: 0.12em; }
+
+            /* Section labels */
+            .label { font-size: 0.58rem; }
+
+            /* Instagram grid: stay 3 col (standard grid aesthetic) */
+        }
+
+        /* ── Very small phones: ≤ 360px ─────────────── */
+        @media (max-width: 360px) {
+            .container { padding: 0 0.875rem; }
+            .wizard-wrap { padding: 1rem 0.875rem; }
+            .stat-item { padding: 1.25rem 0.75rem; }
+            .review-card { font-size: 0.8rem; }
+            .cal-day { font-size: 0.65rem; }
+            .wizard-step-title { font-size: 1.2rem; }
+        }
+
+        /* ── Landscape phones ────────────────────────── */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .hero { min-height: 100vw; height: auto; padding-top: 5rem; padding-bottom: 2.5rem; }
+            .mobile-nav { padding-top: 4rem; justify-content: flex-start; overflow-y: auto; }
+        }
+
+        /* ── High-density / retina: sharper borders ─── */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .wizard-pip { height: 2px; }
+        }
+
+</style>
         <div class="container" style="margin-top:4rem;padding-top:3rem;border-top:1px solid var(--rule);">
 
             <!-- Mini header -->
