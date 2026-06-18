@@ -4,16 +4,35 @@
 [[headers]]
   for = "/*"
   [headers.values]
+    # Force HTTPS for 1 year; include all subdomains; submit to browser preload lists
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    # Prevent the page from being embedded in iframes on other sites (clickjacking)
     X-Frame-Options = "DENY"
+    # Prevent MIME-type sniffing
     X-Content-Type-Options = "nosniff"
+    # Stop old IE/Edge XSS auditor from silently blocking (use CSP instead)
+    X-XSS-Protection = "0"
+    # Limit referrer info sent to other sites
     Referrer-Policy = "strict-origin-when-cross-origin"
-    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com https://cdnjs.cloudflare.com https://identity.netlify.com https://cdn.jsdelivr.net https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.netlify.com https://*.netlify.app; frame-src https://cal.com https://calendly.com;"
+    # Restrict browser features this site can use
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=(), bluetooth=()"
+    # Prevent this page's window from being referenced cross-origin (tab-napping)
+    Cross-Origin-Opener-Policy = "same-origin-allow-popups"
+    # Prevent other sites from embedding our resources
+    Cross-Origin-Resource-Policy = "cross-origin"
+    # Content Security Policy:
+    # - unsafe-inline required: all CSS/JS is inline in the single HTML file
+    # - unsafe-eval removed: GSAP 3.x works without it
+    # - upgrade-insecure-requests: auto-upgrades any http:// links to https://
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://cdnjs.cloudflare.com https://identity.netlify.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; media-src 'self' blob:; connect-src 'self' https://api.netlify.com https://*.netlify.app https://*.netlify.com; frame-src 'none'; upgrade-insecure-requests;"
 
 [[headers]]
   for = "/admin/*"
   [headers.values]
+    # Allow admin to be framed only by same origin (Decap CMS needs this)
     X-Frame-Options = "SAMEORIGIN"
+    # Prevent search engines from indexing the CMS admin panel
+    X-Robots-Tag = "noindex, nofollow"
 
 [[headers]]
   for = "/robots.txt"
