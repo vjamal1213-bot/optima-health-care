@@ -3037,6 +3037,7 @@
                     <input type="hidden" name="treatment"  id="hTreatment"  value="">
                     <input type="hidden" name="date"       id="hDate"       value="">
                     <input type="hidden" name="time-slot"  id="hTimeSlot"   value="">
+                    <input type="hidden" name="_replyto"   id="hReplyTo"    value="">
                     <p class="visually-hidden">
                         <label>Do not fill: <input name="bot-field" tabindex="-1" autocomplete="off"></label>
                     </p>
@@ -4002,6 +4003,9 @@ if (!lenis) {
                     if (!valid) ok = false;
                 });
                 if (!ok) { var fe = document.querySelector('.wf-error'); if(fe) fe.focus(); return; }
+                // Sync patient email into _replyto so Netlify notification is reply-able
+                var emailEl = document.getElementById('wfEmail');
+                if (emailEl) document.getElementById('hReplyTo').value = emailEl.value.trim();
                 buildReview();
             }
             goToStep(from + 1);
