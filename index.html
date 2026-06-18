@@ -2389,83 +2389,119 @@
         </div>
 
         <!-- Service categories strip -->
-        <div class="container" style="margin-top:3rem;padding-top:2.5rem;border-top:1px solid var(--rule);">
-            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:1rem;">
+        <style>
+            .svc-card { background:#fff; border-radius:16px; padding:1.75rem 1.5rem; box-shadow:0 2px 20px rgba(13,40,64,0.07); transition:transform 320ms cubic-bezier(.22,.68,0,1.2), box-shadow 320ms ease; cursor:default; display:flex; flex-direction:column; }
+            .svc-card:hover { transform:translateY(-7px); box-shadow:0 16px 44px rgba(13,40,64,0.14); }
+            .svc-icon-box { width:48px; height:48px; border-radius:12px; background:rgba(88,175,158,0.13); display:flex; align-items:center; justify-content:center; margin-bottom:1.25rem; flex-shrink:0; }
+            .svc-title { font-size:0.92rem; font-weight:700; color:var(--navy); margin-bottom:1rem; letter-spacing:-0.015em; line-height:1.2; }
+            .svc-list { list-style:none; padding:0; margin:0; }
+            .svc-list li { display:flex; align-items:center; gap:0.55rem; font-size:0.73rem; color:var(--ink-muted); padding:0.38rem 0; border-bottom:1px solid rgba(13,40,64,0.07); line-height:1.3; }
+            .svc-list li:last-child { border-bottom:none; padding-bottom:0; }
+            .svc-dot { width:5px; height:5px; min-width:5px; border-radius:50%; background:var(--teal); display:inline-block; }
+        </style>
+        <div class="container" style="margin-top:4rem;padding-top:3rem;border-top:1px solid var(--rule);">
+
+            <!-- Mini header -->
+            <div style="margin-bottom:2.25rem;">
+                <p style="font-size:0.58rem;letter-spacing:0.17em;text-transform:uppercase;color:var(--teal);font-weight:600;margin-bottom:0.5rem;">Everything We Offer</p>
+                <h3 style="font-family:var(--font-display);font-weight:300;font-size:clamp(1.3rem,2.5vw,1.75rem);color:var(--navy);line-height:1.2;max-width:420px;">Complete care under<br>one roof.</h3>
+            </div>
+
+            <!-- Cards -->
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1.1rem;">
 
                 <!-- Dental -->
-                <div style="border:1px solid var(--rule);border-top:3px solid var(--teal);border-radius:10px;padding:1.4rem 1.25rem;background:var(--surface);">
-                    <div style="display:flex;align-items:center;gap:0.55rem;margin-bottom:1rem;">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8 2 5 5 5 8c0 2.5 1 4.5 2 6l1 6h8l1-6c1-1.5 2-3.5 2-6 0-3-3-6-7-6z"/></svg>
-                        <span style="font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--teal);font-weight:600;">Dental</span>
+                <div class="svc-card">
+                    <div class="svc-icon-box">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2C8.5 2 6 4.8 6 8c0 2.2.7 4.2 1.8 5.8L9.5 20h5l1.7-6.2C17.3 12.2 18 10.2 18 8c0-3.2-2.5-6-6-6z"/>
+                            <path d="M9.5 20c0 1.1.9 2 2.5 2s2.5-.9 2.5-2"/>
+                        </svg>
                     </div>
-                    <div style="display:flex;flex-wrap:wrap;gap:0.4rem;">
-                        <span style="font-size:0.68rem;padding:0.22rem 0.6rem;background:rgba(88,175,158,0.1);color:var(--ink-muted);border-radius:20px;">Smile Makeovers</span>
-                        <span style="font-size:0.68rem;padding:0.22rem 0.6rem;background:rgba(88,175,158,0.1);color:var(--ink-muted);border-radius:20px;">Veneers</span>
-                        <span style="font-size:0.68rem;padding:0.22rem 0.6rem;background:rgba(88,175,158,0.1);color:var(--ink-muted);border-radius:20px;">Whitening</span>
-                        <span style="font-size:0.68rem;padding:0.22rem 0.6rem;background:rgba(88,175,158,0.1);color:var(--ink-muted);border-radius:20px;">Invisalign</span>
-                        <span style="font-size:0.68rem;padding:0.22rem 0.6rem;background:rgba(88,175,158,0.1);color:var(--ink-muted);border-radius:20px;">Implants</span>
-                        <span style="font-size:0.68rem;padding:0.22rem 0.6rem;background:rgba(88,175,158,0.1);color:var(--ink-muted);border-radius:20px;">Root Canal</span>
-                        <span style="font-size:0.68rem;padding:0.22rem 0.6rem;background:rgba(88,175,158,0.1);color:var(--ink-muted);border-radius:20px;">General Dentistry</span>
-                    </div>
+                    <p class="svc-title">Dental</p>
+                    <ul class="svc-list">
+                        <li><span class="svc-dot"></span>Smile Makeovers</li>
+                        <li><span class="svc-dot"></span>Veneers</li>
+                        <li><span class="svc-dot"></span>Teeth Whitening</li>
+                        <li><span class="svc-dot"></span>Invisalign</li>
+                        <li><span class="svc-dot"></span>Dental Implants</li>
+                        <li><span class="svc-dot"></span>Root Canal</li>
+                        <li><span class="svc-dot"></span>General Dentistry</li>
+                    </ul>
                 </div>
 
                 <!-- Skin & Dermatology -->
-                <div style="border:1px solid var(--rule);border-top:3px solid var(--teal);border-radius:10px;padding:1.4rem 1.25rem;background:var(--surface);">
-                    <div style="display:flex;align-items:center;gap:0.55rem;margin-bottom:1rem;">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
-                        <span style="font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--teal);font-weight:600;">Skin &amp; Dermatology</span>
+                <div class="svc-card">
+                    <div class="svc-icon-box">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 3C7 3 3 7 3 12s4 9 9 9 9-4 9-9-4-9-9-9z"/>
+                            <path d="M9 9h.01M15 9h.01"/>
+                            <path d="M9.5 15a4 4 0 0 0 5 0"/>
+                            <path d="M12 3v2M12 19v2M3 12H1M23 12h-2"/>
+                        </svg>
                     </div>
-                    <div style="display:flex;flex-wrap:wrap;gap:0.4rem;">
-                        <span style="font-size:0.68rem;padding:0.22rem 0.6rem;background:rgba(88,175,158,0.1);color:var(--ink-muted);border-radius:20px;">Laser Treatments</span>
-                        <span style="font-size:0.68rem;padding:0.22rem 0.6rem;background:rgba(88,175,158,0.1);color:var(--ink-muted);border-radius:20px;">HydraFacial</span>
-                        <span style="font-size:0.68rem;padding:0.22rem 0.6rem;background:rgba(88,175,158,0.1);color:var(--ink-muted);border-radius:20px;">Chemical Peels</span>
-                        <span style="font-size:0.68rem;padding:0.22rem 0.6rem;background:rgba(88,175,158,0.1);color:var(--ink-muted);border-radius:20px;">PRP Therapy</span>
-                        <span style="font-size:0.68rem;padding:0.22rem 0.6rem;background:rgba(88,175,158,0.1);color:var(--ink-muted);border-radius:20px;">Anti-Aging</span>
-                        <span style="font-size:0.68rem;padding:0.22rem 0.6rem;background:rgba(88,175,158,0.1);color:var(--ink-muted);border-radius:20px;">Pigmentation</span>
-                    </div>
+                    <p class="svc-title">Skin &amp; Dermatology</p>
+                    <ul class="svc-list">
+                        <li><span class="svc-dot"></span>Laser Treatments</li>
+                        <li><span class="svc-dot"></span>HydraFacial</li>
+                        <li><span class="svc-dot"></span>Chemical Peels</li>
+                        <li><span class="svc-dot"></span>PRP Therapy</li>
+                        <li><span class="svc-dot"></span>Anti-Aging</li>
+                        <li><span class="svc-dot"></span>Pigmentation</li>
+                    </ul>
                 </div>
 
                 <!-- Facial Aesthetics -->
-                <div style="border:1px solid var(--rule);border-top:3px solid var(--teal);border-radius:10px;padding:1.4rem 1.25rem;background:var(--surface);">
-                    <div style="display:flex;align-items:center;gap:0.55rem;margin-bottom:1rem;">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-                        <span style="font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--teal);font-weight:600;">Facial Aesthetics</span>
+                <div class="svc-card">
+                    <div class="svc-icon-box">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 21.5C12 21.5 3 16 3 9.5A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9 3.5C21 16 12 21.5 12 21.5z"/>
+                            <path d="M12 6V3M9 4l1.5 2M15 4l-1.5 2"/>
+                        </svg>
                     </div>
-                    <div style="display:flex;flex-wrap:wrap;gap:0.4rem;">
-                        <span style="font-size:0.68rem;padding:0.22rem 0.6rem;background:rgba(88,175,158,0.1);color:var(--ink-muted);border-radius:20px;">Botox</span>
-                        <span style="font-size:0.68rem;padding:0.22rem 0.6rem;background:rgba(88,175,158,0.1);color:var(--ink-muted);border-radius:20px;">Dermal Fillers</span>
-                        <span style="font-size:0.68rem;padding:0.22rem 0.6rem;background:rgba(88,175,158,0.1);color:var(--ink-muted);border-radius:20px;">Lip Enhancement</span>
-                        <span style="font-size:0.68rem;padding:0.22rem 0.6rem;background:rgba(88,175,158,0.1);color:var(--ink-muted);border-radius:20px;">Jawline Contouring</span>
-                        <span style="font-size:0.68rem;padding:0.22rem 0.6rem;background:rgba(88,175,158,0.1);color:var(--ink-muted);border-radius:20px;">Skin Tightening</span>
-                    </div>
+                    <p class="svc-title">Facial Aesthetics</p>
+                    <ul class="svc-list">
+                        <li><span class="svc-dot"></span>Botox</li>
+                        <li><span class="svc-dot"></span>Dermal Fillers</li>
+                        <li><span class="svc-dot"></span>Lip Enhancement</li>
+                        <li><span class="svc-dot"></span>Jawline Contouring</li>
+                        <li><span class="svc-dot"></span>Skin Tightening</li>
+                    </ul>
                 </div>
 
                 <!-- Wellness & Body -->
-                <div style="border:1px solid var(--rule);border-top:3px solid var(--teal);border-radius:10px;padding:1.4rem 1.25rem;background:var(--surface);">
-                    <div style="display:flex;align-items:center;gap:0.55rem;margin-bottom:1rem;">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-                        <span style="font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--teal);font-weight:600;">Wellness &amp; Body</span>
+                <div class="svc-card">
+                    <div class="svc-icon-box">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22C6.5 22 2 17.5 2 12S6.5 2 12 2s10 4.5 10 10-4.5 10-10 10z"/>
+                            <path d="M12 8v4l3 3"/>
+                            <path d="M8 12H5M19 12h-3"/>
+                        </svg>
                     </div>
-                    <div style="display:flex;flex-wrap:wrap;gap:0.4rem;">
-                        <span style="font-size:0.68rem;padding:0.22rem 0.6rem;background:rgba(88,175,158,0.1);color:var(--ink-muted);border-radius:20px;">Body Contouring</span>
-                        <span style="font-size:0.68rem;padding:0.22rem 0.6rem;background:rgba(88,175,158,0.1);color:var(--ink-muted);border-radius:20px;">IV Drip Therapy</span>
-                        <span style="font-size:0.68rem;padding:0.22rem 0.6rem;background:rgba(88,175,158,0.1);color:var(--ink-muted);border-radius:20px;">Weight Management</span>
-                        <span style="font-size:0.68rem;padding:0.22rem 0.6rem;background:rgba(88,175,158,0.1);color:var(--ink-muted);border-radius:20px;">Slimming</span>
-                        <span style="font-size:0.68rem;padding:0.22rem 0.6rem;background:rgba(88,175,158,0.1);color:var(--ink-muted);border-radius:20px;">Metabolism Support</span>
-                    </div>
+                    <p class="svc-title">Wellness &amp; Body</p>
+                    <ul class="svc-list">
+                        <li><span class="svc-dot"></span>Body Contouring</li>
+                        <li><span class="svc-dot"></span>IV Drip Therapy</li>
+                        <li><span class="svc-dot"></span>Weight Management</li>
+                        <li><span class="svc-dot"></span>Slimming</li>
+                        <li><span class="svc-dot"></span>Metabolism Support</li>
+                    </ul>
                 </div>
 
                 <!-- Hair & Regenerative -->
-                <div style="border:1px solid var(--rule);border-top:3px solid var(--teal);border-radius:10px;padding:1.4rem 1.25rem;background:var(--surface);">
-                    <div style="display:flex;align-items:center;gap:0.55rem;margin-bottom:1rem;">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                        <span style="font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--teal);font-weight:600;">Hair &amp; Regenerative</span>
+                <div class="svc-card">
+                    <div class="svc-icon-box">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s7-4.5 7-10V5.5L12 3 5 5.5V12c0 5.5 7 10 7 10z"/>
+                            <path d="M9 12l2 2 4-4"/>
+                        </svg>
                     </div>
-                    <div style="display:flex;flex-wrap:wrap;gap:0.4rem;">
-                        <span style="font-size:0.68rem;padding:0.22rem 0.6rem;background:rgba(88,175,158,0.1);color:var(--ink-muted);border-radius:20px;">PRP Hair Therapy</span>
-                        <span style="font-size:0.68rem;padding:0.22rem 0.6rem;background:rgba(88,175,158,0.1);color:var(--ink-muted);border-radius:20px;">Hair Restoration</span>
-                        <span style="font-size:0.68rem;padding:0.22rem 0.6rem;background:rgba(88,175,158,0.1);color:var(--ink-muted);border-radius:20px;">Regenerative Treatments</span>
-                    </div>
+                    <p class="svc-title">Hair &amp; Regenerative</p>
+                    <ul class="svc-list">
+                        <li><span class="svc-dot"></span>PRP Hair Therapy</li>
+                        <li><span class="svc-dot"></span>Hair Restoration</li>
+                        <li><span class="svc-dot"></span>Regenerative Treatments</li>
+                    </ul>
                 </div>
 
             </div>
