@@ -2775,6 +2775,14 @@
             /* Header: ensure logo doesn't crowd hamburger */
             .header-inner { padding: 0; }
 
+            /* Section headers: stack label / headline / link vertically */
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+            .section-link { margin-top: 0.25rem; }
+
             /* Hero: smaller minimum height for small phones */
             .hero { min-height: 540px; }
 
@@ -2785,8 +2793,8 @@
             /* Philosophy visual: shorter on phones */
             .philosophy-visual { height: 260px; }
 
-            /* Steps: less padding */
-            .step { padding: 1.5rem 0; }
+            /* Steps: keep horizontal padding — container has padding:0 inline */
+            .step { padding: 1.5rem clamp(1rem, 5vw, 2.5rem); }
 
             /* Wizard: tighter padding so calendar has room */
             .wizard-wrap { padding: 1.5rem 1.25rem; }
