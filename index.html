@@ -975,67 +975,6 @@
         .voice-dot.active { background: var(--teal); }
 
         /* =============================================
-           INSURANCE STRIP
-           (inspired by Eclipse Clinic's accepted insurance section)
-        ============================================= */
-        .insurance {
-            padding: clamp(3rem, 6vw, 5rem) 0;
-            border-top: 1px solid var(--rule);
-            border-bottom: 1px solid var(--rule);
-            background: var(--cream);
-        }
-
-        .insurance-inner {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1.75rem;
-        }
-
-        .insurance-label {
-            font-size: 0.65rem;
-            font-weight: 400;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            color: var(--ink-ghost);
-        }
-
-        .insurance-logos {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-            gap: 0 2.5rem;
-            row-gap: 1rem;
-        }
-
-        .insurance-name {
-            font-family: var(--font-body);
-            font-size: 0.78rem;
-            font-weight: 400;
-            letter-spacing: 0.1em;
-            color: var(--ink-muted);
-            opacity: 0.55;
-            text-transform: uppercase;
-            transition: opacity 200ms var(--ease-silk), color 200ms var(--ease-silk);
-            cursor: default;
-            position: relative;
-            padding: 0 1.25rem;
-        }
-
-        .insurance-name::before {
-            content: '';
-            position: absolute;
-            left: 0; top: 50%;
-            transform: translateY(-50%);
-            width: 1px; height: 12px;
-            background: var(--rule);
-        }
-        .insurance-name:first-child::before { display: none; }
-
-        .insurance-name:hover { opacity: 1; color: var(--ink); }
-
-        /* =============================================
            BOOK inline booking form
            (inspired by Eclipse's mid-page forms)
         ============================================= */
@@ -2655,27 +2594,6 @@
                     <div class="faq-a"><p>Cost depends on the treatment you choose, how extensive it is, and the materials involved, so we avoid quoting a flat fee without understanding your needs first. During your complimentary consultation, we'll assess your goals and provide a clear, itemized quote.</p></div>
                 </div>
 
-            </div>
-        </div>
-    </section>
-
-    <!-- =================== INSURANCE =================== -->
-    <!-- Inspired by Eclipse Clinic's "Insurance Accepted" section -->
-    <section class="insurance" aria-label="Accepted insurance providers">
-        <div class="container">
-            <div class="insurance-inner">
-                <p class="insurance-label">Insurance accepted</p>
-                <div class="insurance-logos">
-                    <span class="insurance-name">Daman</span>
-                    <span class="insurance-name">AXA Gulf</span>
-                    <span class="insurance-name">NextCare</span>
-                    <span class="insurance-name">MetLife</span>
-                    <span class="insurance-name">Cigna</span>
-                    <span class="insurance-name">Oman Insurance</span>
-                    <span class="insurance-name">NAS</span>
-                    <span class="insurance-name">Al Ain Ahlia</span>
-                </div>
-                <p style="font-size:0.65rem;color:var(--ink-ghost);letter-spacing:0.06em;">Not covered? Direct-pay patients are welcome. Ask us about flexible payment plans.</p>
             </div>
         </div>
     </section>
