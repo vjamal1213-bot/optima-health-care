@@ -6,9 +6,16 @@
 
   <url>
     <loc>https://optima-health-care.netlify.app/</loc>
-    <lastmod>2026-06-09</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://optima-health-care.netlify.app/privacy-policy.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 
 </urlset>
