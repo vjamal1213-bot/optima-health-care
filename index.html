@@ -4225,39 +4225,40 @@ if (!lenis) {
                 var errBox = document.getElementById('wizSubmitError');
                 if (errBox) errBox.style.display = 'none';
 
+                var payload = new URLSearchParams();
+                payload.append('_replyto',  email);
+                payload.append('_subject',  'New Booking — ' + name + ' (' + treatment + ')');
+                payload.append('name',      name);
+                payload.append('phone',     phone);
+                payload.append('email',     email);
+                payload.append('treatment', treatment);
+                payload.append('date',      date);
+                payload.append('time',      timeSlot);
+                payload.append('concern',   concern || '—');
+                payload.append('source',    source  || '—');
+
                 fetch(FORMSPREE, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                    body: JSON.stringify({
-                        _replyto:  email,
-                        _subject:  'New Booking — ' + name + ' (' + treatment + ')',
-                        name:      name,
-                        phone:     phone,
-                        email:     email,
-                        treatment: treatment,
-                        date:      date,
-                        time:      timeSlot,
-                        concern:   concern || '—',
-                        source:    source  || '—'
-                    })
+                    headers: { 'Accept': 'application/json' },
+                    body: payload
                 }).then(function(res) {
                     return res.json().then(function(data) {
-                        if (res.ok && data.ok !== false) {
+                        console.log('Formspree response:', res.status, data);
+                        if (res.ok) {
                             form.style.display = 'none';
                             document.getElementById('wizardProgress').style.display = 'none';
                             document.getElementById('wizardSuccess').classList.add('show');
                             if (typeof gtag !== 'undefined') gtag('event','consultation_request',{event_category:'booking',event_label:treatment});
                         } else {
-                            var msg = (data.errors && data.errors[0] && data.errors[0].message) || data.error || 'Submission failed (code ' + res.status + ')';
+                            var msg = (data.errors && data.errors[0] && data.errors[0].message) || data.error || ('Error ' + res.status);
+                            console.error('Formspree error:', msg);
                             throw new Error(msg);
                         }
                     });
                 }).catch(function(err) {
-                    console.error('Booking submission error:', err && err.message);
+                    console.error('Booking error:', err && err.message);
                     if (btn) { btn.disabled = false; btn.textContent = 'Confirm Booking →'; }
-                    if (errBox) {
-                        errBox.style.display = 'block';
-                    }
+                    if (errBox) errBox.style.display = 'block';
                 });
             });
         });
