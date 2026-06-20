@@ -5,4 +5,4 @@ Disallow: /admin/
 # Block crawling of form submissions / thank-you redirects
 Disallow: /thank-you
 
-Sitemap: https://optima-health-care.netlify.app/sitemap.xml
+Sitemap: https://optimahealthcareuae.com/sitemap.xml
