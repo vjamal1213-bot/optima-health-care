@@ -3319,6 +3319,9 @@
                         <p class="wizard-step-sub">Check your details. Our team will confirm within 2 hours.</p>
                         <div class="review-card" id="reviewCard"></div>
                         <p class="review-privacy">By submitting, you consent to us contacting you via the details provided to confirm your appointment. Your information is never shared with third parties.</p>
+                        <div id="wizSubmitError" style="display:none;margin-top:1rem;padding:0.9rem 1.1rem;background:rgba(220,60,60,0.08);border-left:3px solid #c0392b;font-size:0.82rem;color:#c0392b;line-height:1.6;">
+                            Something went wrong sending your request. Please <a href="https://wa.me/971559920369" target="_blank" rel="noopener" style="color:#c0392b;font-weight:600;text-decoration:underline;">WhatsApp us</a> or call <a href="tel:+971559920369" style="color:#c0392b;font-weight:600;">+971 55 992 0369</a> to book directly.
+                        </div>
                         <div class="wizard-nav">
                             <button type="button" class="wizard-back-btn" onclick="wizBack(4)">&larr; Back</button>
                             <button type="submit" class="wizard-submit-btn" id="wizSubmitBtn">
@@ -4219,6 +4222,9 @@ if (!lenis) {
                 var date      = document.getElementById('hDate').value;
                 var timeSlot  = document.getElementById('hTimeSlot').value;
 
+                var errBox = document.getElementById('wizSubmitError');
+                if (errBox) errBox.style.display = 'none';
+
                 fetch(FORMSPREE, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
@@ -4235,14 +4241,23 @@ if (!lenis) {
                         source:    source  || '—'
                     })
                 }).then(function(res) {
-                    if (!res.ok) throw new Error('server error');
-                    form.style.display = 'none';
-                    document.getElementById('wizardProgress').style.display = 'none';
-                    document.getElementById('wizardSuccess').classList.add('show');
-                    if (typeof gtag !== 'undefined') gtag('event','consultation_request',{event_category:'booking',event_label:treatment});
-                }).catch(function() {
+                    return res.json().then(function(data) {
+                        if (res.ok && data.ok !== false) {
+                            form.style.display = 'none';
+                            document.getElementById('wizardProgress').style.display = 'none';
+                            document.getElementById('wizardSuccess').classList.add('show');
+                            if (typeof gtag !== 'undefined') gtag('event','consultation_request',{event_category:'booking',event_label:treatment});
+                        } else {
+                            var msg = (data.errors && data.errors[0] && data.errors[0].message) || data.error || 'Submission failed (code ' + res.status + ')';
+                            throw new Error(msg);
+                        }
+                    });
+                }).catch(function(err) {
+                    console.error('Booking submission error:', err && err.message);
                     if (btn) { btn.disabled = false; btn.textContent = 'Confirm Booking →'; }
-                    alert('Something went wrong. Please try again or call us on +971 55 992 0369.');
+                    if (errBox) {
+                        errBox.style.display = 'block';
+                    }
                 });
             });
         });
