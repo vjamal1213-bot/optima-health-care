@@ -4198,8 +4198,8 @@ if (!lenis) {
         }
 
         // ── Form submit ───────────────────────────────
-        document.addEventListener('DOMContentLoaded', function() {
-            var form = document.getElementById('wizardForm');
+        function initBookingForm() {
+            var form   = document.getElementById('wizardForm');
             if (!form) return;
 
             var FORMSPREE = 'https://formspree.io/f/xeewyyld';
@@ -4210,64 +4210,104 @@ if (!lenis) {
 
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
-                var btn = document.getElementById('wizSubmitBtn');
-                if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
 
-                var name      = (document.getElementById('wfName')    || {value:''}).value.trim();
-                var phone     = (document.getElementById('wfPhone')   || {value:''}).value.trim();
-                var email     = (document.getElementById('wfEmail')   || {value:''}).value.trim();
-                var concern   = (document.getElementById('wfConcern') || {value:''}).value.trim();
-                var source    = (document.getElementById('wfSource')  || {value:''}).value.trim();
-                var treatment = document.getElementById('hTreatment').value;
-                var date      = document.getElementById('hDate').value;
-                var timeSlot  = document.getElementById('hTimeSlot').value;
-
+                // Always re-query DOM elements inside handler — never rely on stale refs
+                var btn    = document.getElementById('wizSubmitBtn');
                 var errBox = document.getElementById('wizSubmitError');
+                var prog   = document.getElementById('wizardProgress');
+                var succ   = document.getElementById('wizardSuccess');
+
+                function showError() {
+                    if (btn)    { btn.disabled = false; btn.textContent = 'Confirm Booking →'; }
+                    if (errBox) errBox.style.display = 'block';
+                }
+
+                function showSuccess(treatment) {
+                    form.style.display = 'none';
+                    if (prog) prog.style.display = 'none';
+                    if (succ) succ.classList.add('show');
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'consultation_request', { event_category: 'booking', event_label: treatment });
+                    }
+                }
+
+                if (btn)    { btn.disabled = true; btn.textContent = 'Sending…'; }
                 if (errBox) errBox.style.display = 'none';
+
+                // Read all values with safe fallbacks
+                var name      = (document.getElementById('wfName')      || {value:''}).value.trim();
+                var phone     = (document.getElementById('wfPhone')     || {value:''}).value.trim();
+                var email     = (document.getElementById('wfEmail')     || {value:''}).value.trim();
+                var concern   = (document.getElementById('wfConcern')   || {value:''}).value.trim();
+                var source    = (document.getElementById('wfSource')    || {value:''}).value.trim();
+                var treatment = (document.getElementById('hTreatment')  || {value:''}).value.trim();
+                var date      = (document.getElementById('hDate')       || {value:''}).value.trim();
+                var timeSlot  = (document.getElementById('hTimeSlot')   || {value:''}).value.trim();
+
+                // Guard: if critical fields are missing, something went wrong in earlier steps
+                if (!name || !email || !phone) {
+                    console.warn('Missing required fields on submit');
+                    showError();
+                    return;
+                }
 
                 var payload = new URLSearchParams();
                 payload.append('_replyto',  email);
-                payload.append('_subject',  'New Booking — ' + name + ' (' + treatment + ')');
-                payload.append('name',      name);
-                payload.append('phone',     phone);
-                payload.append('email',     email);
-                payload.append('treatment', treatment);
-                payload.append('date',      date);
-                payload.append('time',      timeSlot);
-                payload.append('concern',   concern || '—');
-                payload.append('source',    source  || '—');
+                payload.append('_subject',  'New Booking — ' + name + ' (' + (treatment || 'General') + ')');
+                payload.append('Name',      name);
+                payload.append('Phone',     phone);
+                payload.append('Email',     email);
+                payload.append('Treatment', treatment || '(not specified)');
+                payload.append('Date',      date      || '(not specified)');
+                payload.append('Time',      timeSlot  || '(not specified)');
+                payload.append('Concern',   concern   || '—');
+                payload.append('Source',    source    || '—');
 
                 fetch(FORMSPREE, {
-                    method: 'POST',
+                    method:  'POST',
                     headers: { 'Accept': 'application/json' },
-                    body: payload
-                }).then(function(res) {
-                    return res.json().then(function(data) {
-                        console.log('Formspree response:', res.status, data);
+                    body:    payload
+                })
+                .then(function(res) {
+                    // Try to parse JSON; fall back gracefully if response is not JSON
+                    var jsonPromise = res.json().catch(function() { return {}; });
+                    return jsonPromise.then(function(data) {
                         if (res.ok) {
-                            form.style.display = 'none';
-                            document.getElementById('wizardProgress').style.display = 'none';
-                            document.getElementById('wizardSuccess').classList.add('show');
-                            if (typeof gtag !== 'undefined') gtag('event','consultation_request',{event_category:'booking',event_label:treatment});
+                            showSuccess(treatment);
                         } else {
-                            var msg = (data.errors && data.errors[0] && data.errors[0].message) || data.error || ('Error ' + res.status);
-                            console.error('Formspree error:', msg);
-                            throw new Error(msg);
+                            var msg = (data.errors && data.errors[0] && data.errors[0].message)
+                                   || data.error
+                                   || ('HTTP ' + res.status);
+                            console.error('Formspree rejected submission:', msg, data);
+                            showError();
                         }
                     });
-                }).catch(function(err) {
-                    console.error('Booking error:', err && err.message);
-                    if (btn) { btn.disabled = false; btn.textContent = 'Confirm Booking →'; }
-                    if (errBox) errBox.style.display = 'block';
+                })
+                .catch(function(err) {
+                    // Network failure, CSP block, or JSON parse error
+                    console.error('Booking fetch failed:', err && err.message);
+                    showError();
                 });
             });
-        });
+        }
+
+        // Run immediately if DOM is ready, otherwise wait
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initBookingForm);
+        } else {
+            initBookingForm();
+        }
 
         // ── Init ──────────────────────────────────────
-        document.addEventListener('DOMContentLoaded', function() {
+        function initWizardUI() {
             renderTreatments();
             renderCal();
-        });
+        }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initWizardUI);
+        } else {
+            initWizardUI();
+        }
     })();
 
         // ──────────────────────────────────────────────
