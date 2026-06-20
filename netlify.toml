@@ -24,7 +24,7 @@
     # - unsafe-inline required: all CSS/JS is inline in the single HTML file
     # - unsafe-eval removed: GSAP 3.x works without it
     # - upgrade-insecure-requests: auto-upgrades any http:// links to https://
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://cdnjs.cloudflare.com https://identity.netlify.com https://cdn.jsdelivr.net https://w.behold.so; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://w.behold.so; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; media-src 'self' blob:; connect-src 'self' https://api.netlify.com https://*.netlify.app https://*.netlify.com https://feeds.behold.so; frame-src 'none'; upgrade-insecure-requests;"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://cdnjs.cloudflare.com https://identity.netlify.com https://cdn.jsdelivr.net https://w.behold.so; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://w.behold.so; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; media-src 'self' blob:; connect-src 'self' https://api.netlify.com https://*.netlify.app https://*.netlify.com https://feeds.behold.so https://formspree.io; frame-src 'none'; upgrade-insecure-requests;"
 
 [[headers]]
   for = "/admin/*"
