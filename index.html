@@ -4077,12 +4077,14 @@ if (!lenis) {
             }
         });
 
-        // Update WhatsApp links with actual number
+        // Update WhatsApp links with actual number, preserving any ?text= query string
         const whatsappData = cache['content/settings.json'];
         if (whatsappData && whatsappData.whatsapp) {
             const wa = whatsappData.whatsapp.replace(/\D/g,'');
             document.querySelectorAll('a[href*="wa.me"], a[href*="whatsapp"]').forEach(a => {
-                a.href = 'https://wa.me/' + wa;
+                const qi = a.href.indexOf('?');
+                const qs = qi !== -1 ? a.href.slice(qi) : '';
+                a.href = 'https://wa.me/' + wa + qs;
             });
         }
 
