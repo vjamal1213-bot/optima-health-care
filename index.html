@@ -17,6 +17,10 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://optimahealthcareuae.com/">
 
+    <!-- hreflang — English (UAE) is the only language version -->
+    <link rel="alternate" hreflang="en-AE" href="https://optimahealthcareuae.com/">
+    <link rel="alternate" hreflang="x-default" href="https://optimahealthcareuae.com/">
+
     <!-- Favicon — brand butterfly mark -->
     <link rel="icon"             type="image/x-icon" href="/favicon.ico">
     <link rel="icon"             type="image/png"    href="/favicon-32x32.png" sizes="32x32">
@@ -92,7 +96,14 @@
       "areaServed": [
         {"@type": "City", "name": "Dubai"},
         {"@type": "City", "name": "Abu Dhabi"},
-        {"@type": "State", "name": "Dubai"}
+        {"@type": "Neighborhood", "name": "Dubai Investment Park"},
+        {"@type": "Neighborhood", "name": "Discovery Gardens"},
+        {"@type": "Neighborhood", "name": "Al Furjan"},
+        {"@type": "Neighborhood", "name": "Jebel Ali Village"},
+        {"@type": "Neighborhood", "name": "Dubai South"},
+        {"@type": "Neighborhood", "name": "Jumeirah Golf Estates"},
+        {"@type": "Neighborhood", "name": "Motor City"},
+        {"@type": "Neighborhood", "name": "Sports City"}
       ],
       "medicalSpecialty": [
         "Dentistry",
@@ -220,6 +231,33 @@
           }
         }
       ]
+    }
+    </script>
+
+    <!-- Structured Data: WebSite -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://optimahealthcareuae.com/#website",
+      "url": "https://optimahealthcareuae.com/",
+      "name": "Optima Health Care",
+      "description": "Dubai's premier dental, aesthetics and wellness clinic at Junction Mall, Dubai Investment Park.",
+      "publisher": { "@id": "https://optimahealthcareuae.com/#organization" }
+    }
+    </script>
+
+    <!-- Structured Data: VideoObject — clinic tour -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoObject",
+      "name": "Optima Health Care Dubai — Clinic Tour",
+      "description": "Take a tour of Optima Health Care, Dubai's premier dental and aesthetic clinic at Junction Mall, Dubai Investment Park. Meet our DHA-licensed dentists and aesthetic specialists.",
+      "thumbnailUrl": "https://optimahealthcareuae.com/uploads/clinic-poster.jpg",
+      "uploadDate": "2026-06-01",
+      "contentUrl": "https://optimahealthcareuae.com/uploads/clinic-tour.mp4",
+      "publisher": { "@id": "https://optimahealthcareuae.com/#organization" }
     }
     </script>
 
@@ -2779,6 +2817,7 @@
             .svc-card:hover { transform:translateY(-6px); box-shadow:0 14px 40px rgba(13,40,64,0.13); }
             .svc-icon-box { width:46px; height:46px; border-radius:0; background:rgba(88,175,158,0.11); display:flex; align-items:center; justify-content:center; margin-bottom:1.35rem; flex-shrink:0; }
             .svc-title { font-size:0.95rem; font-weight:700; color:var(--navy); margin-bottom:1rem; letter-spacing:-0.01em; line-height:1.2; }
+            .svc-desc { font-size:0.72rem; color:var(--ink-muted); line-height:1.55; margin-bottom:0.9rem; margin-top:-0.3rem; }
             .svc-list { list-style:none; padding:0; margin:0; }
             .svc-list li { display:flex; align-items:center; gap:0.55rem; font-size:0.74rem; color:var(--ink-muted); padding:0.4rem 0; border-bottom:1px solid rgba(13,40,64,0.07); line-height:1.3; }
             .svc-list li:last-child { border-bottom:none; padding-bottom:0; }
@@ -2961,6 +3000,7 @@
                         </svg>
                     </div>
                     <p class="svc-title">Dental</p>
+                    <p class="svc-desc">DHA-licensed dentists in Dubai offering everything from routine check-ups to advanced cosmetic dentistry — veneers, implants, Invisalign and smile makeovers.</p>
                     <ul class="svc-list">
                         <li><span class="svc-dot"></span>Smile Makeovers</li>
                         <li><span class="svc-dot"></span>Veneers</li>
@@ -2983,6 +3023,7 @@
                         </svg>
                     </div>
                     <p class="svc-title">Skin &amp; Dermatology</p>
+                    <p class="svc-desc">Medical-grade skin treatments for all skin types — HydraFacial, laser therapy, chemical peels, and anti-ageing protocols delivered by qualified dermatology specialists in Dubai.</p>
                     <ul class="svc-list">
                         <li><span class="svc-dot"></span>Laser Treatments</li>
                         <li><span class="svc-dot"></span>HydraFacial</li>
@@ -3002,6 +3043,7 @@
                         </svg>
                     </div>
                     <p class="svc-title">Facial Aesthetics</p>
+                    <p class="svc-desc">Natural-looking aesthetic treatments — Botox, dermal fillers, lip enhancement and jawline contouring — administered safely by medically trained specialists at our Dubai clinic.</p>
                     <ul class="svc-list">
                         <li><span class="svc-dot"></span>Botox</li>
                         <li><span class="svc-dot"></span>Dermal Fillers</li>
@@ -3021,6 +3063,7 @@
                         </svg>
                     </div>
                     <p class="svc-title">Wellness &amp; Body</p>
+                    <p class="svc-desc">Evidence-based body transformation and wellness programmes — body contouring, IV drip therapy, weight management and metabolism support tailored to your health goals in Dubai.</p>
                     <ul class="svc-list">
                         <li><span class="svc-dot"></span>Body Contouring</li>
                         <li><span class="svc-dot"></span>IV Drip Therapy</li>
@@ -3039,6 +3082,7 @@
                         </svg>
                     </div>
                     <p class="svc-title">Hair &amp; Regenerative</p>
+                    <p class="svc-desc">Clinically proven hair restoration and regenerative therapies — PRP hair treatment, hair loss solutions and regenerative medicine for natural, lasting results.</p>
                     <ul class="svc-list">
                         <li><span class="svc-dot"></span>PRP Hair Therapy</li>
                         <li><span class="svc-dot"></span>Hair Restoration</li>
@@ -3047,6 +3091,11 @@
                 </div>
 
             </div>
+
+            <!-- Service area — helps local "near me" searches -->
+            <p style="margin-top:2.5rem;font-size:0.78rem;color:var(--ink-muted);line-height:1.7;max-width:780px;border-top:1px solid var(--rule);padding-top:1.5rem;">
+                Optima Health Care is conveniently located at Junction Mall, Dubai Investment Park (DIP) — a short drive from <strong>Discovery Gardens</strong>, <strong>Al Furjan</strong>, <strong>Jebel Ali Village</strong>, <strong>Dubai South</strong>, <strong>Jumeirah Golf Estates</strong>, <strong>Motor City</strong>, <strong>Sports City</strong>, and communities across Dubai. Free parking is available at the mall. Our dental clinic and aesthetic centre welcomes patients from across the UAE.
+            </p>
         </div>
     </section>
 
