@@ -480,6 +480,10 @@ img { display: block; max-width: 100%; }
   max-width: 520px;
   margin-top: 1.5rem;
 }
+h2.svc-hero-sub {
+  font-family: var(--font-body);
+  font-weight: 400;
+}
 
 .svc-hero-ctas {
   display: flex;
