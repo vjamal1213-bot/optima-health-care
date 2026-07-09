@@ -164,6 +164,9 @@
 
 <!-- ─── HERO ─────────────────────────────────────────── -->
 <section class="svc-hero" aria-label="Slimming and Wellness hero">
+  <div aria-hidden="true" style="position:absolute;inset:0;overflow:hidden;">
+    <img src="/assets/images/tile-slimming-wellness.webp" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;">
+  </div>
   <div class="svc-hero-bg svc-hero-bg-wellness"></div>
   <div class="svc-hero-grain" aria-hidden="true"></div>
   <div class="svc-hero-horizon" aria-hidden="true"></div>
@@ -227,14 +230,8 @@
           <li>Ongoing monitoring and programme adjustment</li>
         </ul>
       </div>
-      <div class="svc-intro-visual reveal d2" aria-hidden="true">
-        <div class="svc-intro-visual-bg"></div>
-        <div class="svc-intro-visual-icon">
-          <svg width="110" height="110" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M24 8 L28 16 L38 17 L31 24 L33 34 L24 29 L15 34 L17 24 L10 17 L20 16 Z"/>
-            <circle cx="24" cy="24" r="6"/>
-          </svg>
-        </div>
+      <div class="svc-intro-visual reveal d2">
+        <img src="/assets/images/tile-slimming-wellness.webp" alt="Wellness treatment at Optima Health Care, Dubai Investment Park" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform 600ms var(--ease-silk);">
         <p class="svc-intro-visual-caption">Medical-grade wellness, Dubai Investment Park</p>
       </div>
     </div>
@@ -252,6 +249,10 @@
       <h2 style="font-family:var(--font-display);font-weight:300;font-size:clamp(1.3rem,2.2vw,1.8rem);color:var(--ink);max-width:380px;text-align:right;line-height:1.3;">
         Science-backed treatments for lasting results.
       </h2>
+    </div>
+
+    <div class="reveal" style="overflow:hidden;height:clamp(200px,26vw,340px);margin-bottom:1px;">
+      <img src="/assets/images/philosophy.webp" alt="Optima Health Care clinic interior, Dubai Investment Park" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center 40%;display:block;">
     </div>
 
     <div class="svc-treatments-grid">
@@ -319,7 +320,11 @@
       </h2>
     </div>
 
-    <div class="svc-steps svc-steps-3" style="margin-top:clamp(2.5rem,5vw,4rem);">
+    <div class="reveal" style="overflow:hidden;height:clamp(180px,22vw,300px);margin-top:clamp(2.5rem,5vw,4rem);margin-bottom:clamp(2rem,4vw,3rem);">
+      <img src="/uploads/clinic-poster.jpg" alt="Optima Health Care clinic, Dubai" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center 35%;display:block;">
+    </div>
+
+    <div class="svc-steps svc-steps-3" style="margin-top:0;">
 
       <div class="svc-step reveal d1">
         <span class="svc-step-num">01</span>
@@ -373,39 +378,12 @@
   </div>
 </section>
 
-<!-- ─── DOCTOR ───────────────────────────────────────── -->
-<section class="svc-doctor" aria-label="Wellness specialist">
-  <div class="container">
-    <div class="svc-doctor-grid">
-      <div class="svc-doctor-portrait reveal">
-        <div class="svc-doctor-portrait-bg"></div>
-        <p class="svc-doctor-tag">Lead Wellness Specialist</p>
-      </div>
-      <div>
-        <span class="label reveal">Medical Expertise Behind Every Programme</span>
-        <div class="rule-accent reveal d1"></div>
-        <h2 class="svc-doctor-name reveal d2">Our Wellness Team</h2>
-        <p class="svc-doctor-title reveal d3">DHA-Licensed Doctors &amp; Wellness Specialists</p>
-        <p class="svc-doctor-body reveal d4">
-          Slimming and wellness at Optima is led by doctors — not aestheticians. Our team holds active DHA licences in aesthetic medicine and wellness, and brings clinical training in body composition, metabolic health, and non-surgical body treatments.
-        </p>
-        <p class="svc-doctor-body reveal d5">
-          We don't believe in quick fixes. We believe in understanding your physiology deeply enough to design a programme that delivers results that last. That rigour is what distinguishes a medical wellness clinic from a beauty spa.
-        </p>
-        <div class="svc-doctor-creds reveal d6">
-          <span class="svc-doctor-cred">DHA Licensed</span>
-          <span class="svc-doctor-cred">Body Contouring Certified</span>
-          <span class="svc-doctor-cred">IV Therapy Certified</span>
-          <span class="svc-doctor-cred">Metabolic Health Training</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ─── TESTIMONIAL ──────────────────────────────────── -->
-<section class="svc-voice" aria-label="Patient testimonial">
-  <div class="container">
+<section class="svc-voice" aria-label="Patient testimonial" style="position:relative;">
+  <div aria-hidden="true" style="position:absolute;inset:0;overflow:hidden;">
+    <img src="/assets/images/philosophy.webp" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center;opacity:0.1;">
+  </div>
+  <div class="container" style="position:relative;z-index:1;">
     <div class="svc-voice-inner">
       <span class="label reveal" style="color:rgba(246,241,234,0.25);">Patient Story</span>
       <div class="rule-accent reveal d1" style="background:var(--teal);opacity:0.5;margin-top:0.75rem;"></div>

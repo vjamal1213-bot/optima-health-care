@@ -164,6 +164,9 @@
 
 <!-- ─── HERO ─────────────────────────────────────────── -->
 <section class="svc-hero" aria-label="Facial Aesthetics hero">
+  <div aria-hidden="true" style="position:absolute;inset:0;overflow:hidden;">
+    <img src="/assets/images/tile-facial-aesthetics.webp" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;">
+  </div>
   <div class="svc-hero-bg svc-hero-bg-alt"></div>
   <div class="svc-hero-grain" aria-hidden="true"></div>
   <div class="svc-hero-horizon" aria-hidden="true"></div>
@@ -227,15 +230,8 @@
           <li>Discreet, private consultation environment</li>
         </ul>
       </div>
-      <div class="svc-intro-visual reveal d2" aria-hidden="true">
-        <div class="svc-intro-visual-bg"></div>
-        <div class="svc-intro-visual-icon">
-          <svg width="110" height="110" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M24 8 C16 8 10 14 10 22 C10 28 13 33 18 36 L18 40 L30 40 L30 36 C35 33 38 28 38 22 C38 14 32 8 24 8Z"/>
-            <path d="M20 22 Q24 18 28 22"/>
-            <circle cx="24" cy="16" r="2"/>
-          </svg>
-        </div>
+      <div class="svc-intro-visual reveal d2">
+        <img src="/assets/images/tile-facial-aesthetics.webp" alt="Facial aesthetics consultation at Optima Health Care, Dubai Investment Park" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform 600ms var(--ease-silk);">
         <p class="svc-intro-visual-caption">Precision aesthetic medicine, Dubai Investment Park</p>
       </div>
     </div>
@@ -253,6 +249,10 @@
       <h2 style="font-family:var(--font-display);font-weight:300;font-size:clamp(1.3rem,2.2vw,1.8rem);color:var(--ink);max-width:380px;text-align:right;line-height:1.3;">
         A curated menu of medical-grade treatments.
       </h2>
+    </div>
+
+    <div class="reveal" style="overflow:hidden;height:clamp(200px,26vw,340px);margin-bottom:1px;">
+      <img src="/assets/images/philosophy.webp" alt="Optima Health Care clinic interior, Dubai Investment Park" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center 40%;display:block;">
     </div>
 
     <div class="svc-treatments-grid">
@@ -320,7 +320,11 @@
       </h2>
     </div>
 
-    <div class="svc-steps" style="margin-top:clamp(2.5rem,5vw,4rem);">
+    <div class="reveal" style="overflow:hidden;height:clamp(180px,22vw,300px);margin-top:clamp(2.5rem,5vw,4rem);margin-bottom:clamp(2rem,4vw,3rem);">
+      <img src="/uploads/clinic-poster.jpg" alt="Optima Health Care clinic, Dubai" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center 35%;display:block;">
+    </div>
+
+    <div class="svc-steps" style="margin-top:0;">
 
       <div class="svc-step reveal d1">
         <span class="svc-step-num">01</span>
@@ -374,39 +378,12 @@
   </div>
 </section>
 
-<!-- ─── DOCTOR ───────────────────────────────────────── -->
-<section class="svc-doctor" aria-label="Aesthetic specialist">
-  <div class="container">
-    <div class="svc-doctor-grid">
-      <div class="svc-doctor-portrait reveal">
-        <div class="svc-doctor-portrait-bg"></div>
-        <p class="svc-doctor-tag">Lead Aesthetic Specialist</p>
-      </div>
-      <div>
-        <span class="label reveal">The Specialist Behind Your Glow</span>
-        <div class="rule-accent reveal d1"></div>
-        <h2 class="svc-doctor-name reveal d2">Our Aesthetic Team</h2>
-        <p class="svc-doctor-title reveal d3">DHA-Licensed Aesthetic Medicine Doctors</p>
-        <p class="svc-doctor-body reveal d4">
-          Our facial aesthetics team consists of medically qualified doctors with specialised training in injectable aesthetics, skin medicine, and non-surgical procedures. Every doctor holds an active DHA licence and adheres to international clinical standards.
-        </p>
-        <p class="svc-doctor-body reveal d5">
-          We are trained to see the face as a whole — not just individual concerns. This holistic perspective is what separates a practitioner who treats symptoms from one who creates genuine harmony. Our philosophy is always: the best result is one that makes you look like the best version of yourself.
-        </p>
-        <div class="svc-doctor-creds reveal d6">
-          <span class="svc-doctor-cred">DHA Licensed</span>
-          <span class="svc-doctor-cred">Injectable Aesthetics Certified</span>
-          <span class="svc-doctor-cred">International Training</span>
-          <span class="svc-doctor-cred">HydraFacial Certified</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ─── TESTIMONIAL ──────────────────────────────────── -->
-<section class="svc-voice" aria-label="Patient testimonial">
-  <div class="container">
+<section class="svc-voice" aria-label="Patient testimonial" style="position:relative;">
+  <div aria-hidden="true" style="position:absolute;inset:0;overflow:hidden;">
+    <img src="/assets/images/philosophy.webp" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center;opacity:0.1;">
+  </div>
+  <div class="container" style="position:relative;z-index:1;">
     <div class="svc-voice-inner">
       <span class="label reveal" style="color:rgba(246,241,234,0.25);">Patient Story</span>
       <div class="rule-accent reveal d1" style="background:var(--teal);opacity:0.5;margin-top:0.75rem;"></div>

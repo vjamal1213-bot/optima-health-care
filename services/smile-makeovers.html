@@ -167,6 +167,9 @@
 
 <!-- ─── HERO ─────────────────────────────────────────── -->
 <section class="svc-hero" aria-label="Smile Makeovers hero">
+  <div aria-hidden="true" style="position:absolute;inset:0;overflow:hidden;">
+    <img src="/assets/images/tile-smile-makeovers.webp" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;">
+  </div>
   <div class="svc-hero-bg"></div>
   <div class="svc-hero-grain" aria-hidden="true"></div>
   <div class="svc-hero-horizon" aria-hidden="true"></div>
@@ -230,15 +233,9 @@
           <li>DHA-licensed specialists with international training</li>
         </ul>
       </div>
-      <div class="svc-intro-visual reveal d2" aria-hidden="true">
-        <div class="svc-intro-visual-bg"></div>
-        <div class="svc-intro-visual-icon">
-          <svg width="120" height="120" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M24 4C14 4 8 12 8 20c0 5 2 9 5 12l2 10h18l2-10c3-3 5-7 5-12 0-8-6-16-16-16z"/>
-            <path d="M16 20 Q20 26 24 20 Q28 26 32 20"/>
-          </svg>
-        </div>
-        <p class="svc-intro-visual-caption">Precision aesthetic dentistry, Dubai Investment Park</p>
+      <div class="svc-intro-visual reveal d2">
+        <img src="/assets/images/tile-smile-makeovers.webp" alt="Smile makeover patient at Optima Health Care, Dubai Investment Park" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform 600ms var(--ease-silk);">
+        <p class="svc-intro-visual-caption">Precision cosmetic dentistry, Dubai Investment Park</p>
       </div>
     </div>
   </div>
@@ -257,6 +254,9 @@
       </h2>
     </div>
 
+    <div class="reveal" style="overflow:hidden;height:clamp(200px,26vw,340px);margin-bottom:1px;">
+      <img src="/assets/images/philosophy.webp" alt="Optima Health Care clinic interior, Dubai Investment Park" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center 40%;display:block;">
+    </div>
     <div class="svc-treatments-grid">
 
       <div class="svc-treatment-card reveal">
@@ -322,7 +322,10 @@
       </h2>
     </div>
 
-    <div class="svc-steps svc-steps-3" style="margin-top:clamp(2.5rem,5vw,4rem);">
+    <div class="reveal" style="overflow:hidden;height:clamp(180px,22vw,300px);margin-top:clamp(2.5rem,5vw,4rem);margin-bottom:clamp(2rem,4vw,3rem);">
+      <img src="/uploads/clinic-poster.jpg" alt="Optima Health Care clinic, Dubai" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center 35%;display:block;">
+    </div>
+    <div class="svc-steps svc-steps-3" style="margin-top:0;">
 
       <div class="svc-step reveal d1">
         <span class="svc-step-num">01</span>
@@ -376,39 +379,12 @@
   </div>
 </section>
 
-<!-- ─── DOCTOR ───────────────────────────────────────── -->
-<section class="svc-doctor" aria-label="Lead cosmetic dentist">
-  <div class="container">
-    <div class="svc-doctor-grid">
-      <div class="svc-doctor-portrait reveal">
-        <div class="svc-doctor-portrait-bg"></div>
-        <p class="svc-doctor-tag">Lead Cosmetic Dentist</p>
-      </div>
-      <div>
-        <span class="label reveal">The Specialist Behind Your Smile</span>
-        <div class="rule-accent reveal d1"></div>
-        <h2 class="svc-doctor-name reveal d2">Our Cosmetic Team</h2>
-        <p class="svc-doctor-title reveal d3">DHA-Licensed Cosmetic &amp; Restorative Dentists</p>
-        <p class="svc-doctor-body reveal d4">
-          Our cosmetic dentistry team combines clinical precision with an artistic eye. Each dentist holds active DHA licensure and has trained in advanced smile design, veneers, and restorative techniques. They treat every smile as a unique work of art — guided by the individual's facial harmony and personal vision.
-        </p>
-        <p class="svc-doctor-body reveal d5">
-          We believe exceptional cosmetic dentistry is invisible. The goal isn't to make your smile look "done" — it's to make it look unmistakably yours.
-        </p>
-        <div class="svc-doctor-creds reveal d6">
-          <span class="svc-doctor-cred">DHA Licensed</span>
-          <span class="svc-doctor-cred">Invisalign Certified</span>
-          <span class="svc-doctor-cred">Digital Smile Design</span>
-          <span class="svc-doctor-cred">International Training</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ─── TESTIMONIAL ──────────────────────────────────── -->
-<section class="svc-voice" aria-label="Patient testimonial">
-  <div class="container">
+<section class="svc-voice" aria-label="Patient testimonial" style="position:relative;">
+  <div aria-hidden="true" style="position:absolute;inset:0;overflow:hidden;">
+    <img src="/assets/images/philosophy.webp" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center;opacity:0.1;">
+  </div>
+  <div class="container" style="position:relative;z-index:1;">
     <div class="svc-voice-inner">
       <span class="label reveal" style="color:rgba(246,241,234,0.25);">Patient Story</span>
       <div class="rule-accent reveal d1" style="background:var(--teal);opacity:0.5;margin-top:0.75rem;"></div>
