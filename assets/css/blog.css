@@ -273,3 +273,235 @@ a { color: inherit; }
   .article-cta { padding: 2rem 1.25rem; }
   .blog-footer-inner { flex-direction: column; align-items: flex-start; }
 }
+
+/* ═══════════════════════════════════════════
+   THE EDIT — Editorial Hub Styles
+═══════════════════════════════════════════ */
+
+/* Header: logo + "The Edit" badge */
+.header-left { display: flex; align-items: center; gap: 1.1rem; }
+.header-edit-badge {
+  font-family: var(--font-display);
+  font-size: 0.95rem; font-weight: 300; font-style: italic;
+  color: rgba(246,241,234,0.4);
+  padding-left: 1.1rem;
+  border-left: 1px solid rgba(246,241,234,0.12);
+  letter-spacing: 0.02em;
+}
+
+/* ── Masthead ── */
+.edit-masthead {
+  background: var(--navy);
+  padding: clamp(3.5rem, 7vw, 5.5rem) 2rem clamp(2.5rem, 5vw, 4rem);
+  text-align: center;
+  border-bottom: 1px solid rgba(246,241,234,0.05);
+}
+.edit-masthead-inner { max-width: 680px; margin: 0 auto; }
+
+.edit-rule-row {
+  display: flex; align-items: center; gap: 1.25rem;
+  margin-bottom: 1.75rem;
+}
+.edit-rule-line { flex: 1; height: 1px; background: rgba(88,175,158,0.2); }
+.edit-rule-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.57rem; font-weight: 500;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(88,175,158,0.55); white-space: nowrap;
+}
+
+.edit-wordmark {
+  font-family: var(--font-display);
+  font-weight: 300; font-style: italic;
+  font-size: clamp(4.5rem, 12vw, 8rem);
+  color: var(--cream);
+  line-height: 0.95; letter-spacing: -0.025em;
+  margin-bottom: 1.5rem;
+}
+
+.edit-tagline {
+  font-size: 0.86rem;
+  color: rgba(246,241,234,0.4);
+  line-height: 1.75;
+  max-width: 460px; margin: 0 auto 2.75rem;
+}
+
+/* ── Category filter pills ── */
+.edit-filters {
+  display: flex; gap: 0.5rem;
+  justify-content: center; flex-wrap: wrap;
+}
+.edit-filter {
+  background: transparent;
+  border: 1px solid rgba(246,241,234,0.14);
+  color: rgba(246,241,234,0.45);
+  padding: 0.45rem 1.4rem;
+  border-radius: 100px;
+  font-family: var(--font-body);
+  font-size: 0.73rem; letter-spacing: 0.05em;
+  cursor: pointer; transition: all 180ms; line-height: 1;
+}
+.edit-filter:hover {
+  border-color: rgba(88,175,158,0.45);
+  color: var(--teal);
+}
+.edit-filter.is-active {
+  background: var(--teal);
+  border-color: var(--teal);
+  color: var(--navy); font-weight: 700;
+}
+
+/* ── Category pills on cards ── */
+.edit-cat-pill {
+  display: inline-block;
+  font-size: 0.57rem; font-weight: 600;
+  letter-spacing: 0.13em; text-transform: uppercase;
+  border-radius: 100px; padding: 0.22rem 0.7rem;
+  margin-bottom: 0.8rem;
+}
+.edit-cat-smile    { background: rgba(88,175,158,0.12); color: #2f7a6c; }
+.edit-cat-aesthetics { background: rgba(160,100,140,0.11); color: #7a3a62; }
+.edit-cat-wellness { background: rgba(80,140,180,0.11); color: #2a5f82; }
+
+/* ── Content grid section ── */
+.edit-grid-section {
+  background: var(--cream);
+  padding: clamp(2rem, 4vw, 3.5rem) 2rem clamp(3rem, 6vw, 5rem);
+}
+.edit-grid-inner { max-width: 1200px; margin: 0 auto; }
+.edit-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+}
+
+/* ── Card backgrounds (appear on cream bg) ── */
+.blog-card { background: #fff; }
+.edit-coming-card { background: #fff; }
+
+/* ── Featured post card (spans full width) ── */
+.edit-featured-card {
+  grid-column: 1 / -1;
+  display: grid; grid-template-columns: 1fr 1fr;
+  text-decoration: none; color: inherit;
+  border: 1px solid var(--rule); overflow: hidden;
+  transition: box-shadow 260ms ease;
+}
+.edit-featured-card:hover { box-shadow: 0 24px 60px rgba(13,40,64,0.12); }
+
+.edit-featured-img {
+  aspect-ratio: unset; min-height: 340px;
+  overflow: hidden; position: relative;
+}
+.edit-featured-body {
+  padding: clamp(2rem, 4vw, 3rem);
+  display: flex; flex-direction: column; justify-content: center;
+  background: #fff;
+}
+.edit-featured-meta {
+  display: flex; align-items: center; gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+.edit-featured-badge {
+  font-size: 0.57rem; font-weight: 600; letter-spacing: 0.13em;
+  text-transform: uppercase; color: var(--navy);
+  background: rgba(13,40,64,0.07);
+  border-radius: 100px; padding: 0.22rem 0.7rem;
+}
+.edit-featured-title {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(1.55rem, 2.4vw, 2.1rem);
+  color: var(--navy); line-height: 1.2;
+  margin-bottom: 1rem;
+}
+.edit-featured-excerpt {
+  font-size: 0.9rem; color: var(--ink-muted);
+  line-height: 1.78; margin-bottom: 1.75rem; flex: 1;
+}
+.edit-featured-footer {
+  display: flex; align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--rule); padding-top: 1rem;
+}
+.edit-featured-read-time { font-size: 0.72rem; color: var(--ink-muted); }
+.edit-read-link { color: var(--teal); font-weight: 600; font-size: 0.8rem; }
+
+/* ── Coming-soon cards ── */
+.edit-coming-card {
+  border: 1px solid var(--rule); overflow: hidden;
+  display: flex; flex-direction: column; opacity: 0.6;
+  transition: transform 240ms var(--ease), box-shadow 240ms ease;
+}
+.edit-coming-label {
+  font-size: 0.62rem; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: rgba(88,175,158,0.5);
+}
+
+/* ── Empty state ── */
+.edit-empty {
+  text-align: center; padding: 3.5rem 1rem;
+}
+.edit-empty-text {
+  font-family: var(--font-display);
+  font-size: 1.5rem; font-weight: 300; font-style: italic;
+  color: var(--ink-muted); margin-bottom: 1rem;
+}
+.edit-empty-cta {
+  color: var(--teal); font-size: 0.85rem;
+  text-decoration: underline; text-underline-offset: 3px;
+}
+
+/* ── Consultation CTA ── */
+.edit-consult-cta {
+  background: var(--navy);
+  padding: clamp(3.5rem, 7vw, 5.5rem) 2rem;
+  text-align: center;
+}
+.edit-consult-inner { max-width: 580px; margin: 0 auto; }
+.edit-consult-eyebrow {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.58rem; font-weight: 500;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(88,175,158,0.65);
+  display: block; margin-bottom: 1.25rem;
+}
+.edit-consult-headline {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(2rem, 4vw, 2.9rem);
+  color: var(--cream); line-height: 1.18;
+  margin-bottom: 1.25rem;
+}
+.edit-consult-headline em { font-style: italic; color: var(--teal); }
+.edit-consult-sub {
+  font-size: 0.88rem; color: rgba(246,241,234,0.4);
+  line-height: 1.78; margin-bottom: 2.25rem;
+}
+.edit-consult-ctas { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+.edit-cta-primary {
+  display: inline-block; background: var(--teal); color: var(--navy);
+  padding: 0.9rem 2.1rem; border-radius: 100px;
+  text-decoration: none; font-weight: 700; font-size: 0.85rem;
+  letter-spacing: 0.01em; transition: background 180ms;
+}
+.edit-cta-primary:hover { background: var(--teal-deep); color: #fff; }
+.edit-cta-ghost {
+  display: inline-block; color: rgba(246,241,234,0.5);
+  padding: 0.9rem 1.4rem; text-decoration: none;
+  font-size: 0.85rem; transition: color 180ms;
+}
+.edit-cta-ghost:hover { color: var(--teal); }
+
+/* ── Responsive: The Edit ── */
+@media (max-width: 900px) {
+  .edit-grid { grid-template-columns: repeat(2, 1fr); }
+  .edit-featured-card { grid-template-columns: 1fr; }
+  .edit-featured-img { min-height: 240px; aspect-ratio: 16/9; }
+}
+@media (max-width: 600px) {
+  .edit-grid { grid-template-columns: 1fr; }
+  .edit-featured-card { grid-column: 1; }
+  .header-edit-badge { display: none; }
+  .edit-wordmark { font-size: clamp(3.5rem, 16vw, 5rem); }
+}
