@@ -1,8 +1,40 @@
 User-agent: *
 Allow: /
 Disallow: /admin/
+Disallow: /.netlify/
 
-# Block crawling of form submissions / thank-you redirects
-Disallow: /thank-you
+# AI search crawlers — explicitly permitted
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
 
 Sitemap: https://optimahealthcareuae.com/sitemap.xml
